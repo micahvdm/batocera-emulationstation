@@ -277,7 +277,7 @@ endif()
 
 #add definitions(-DUSE_OPENGL_21)
 if(${GLSystem} MATCHES "Desktop OpenGL")
-    add_definitions(-DUSE_MESA_GLES)
+    add_definitions(-DUSE_OPENGL_21)
 elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
     add_definitions(-DUSE_OPENGLES_20)
 else()
