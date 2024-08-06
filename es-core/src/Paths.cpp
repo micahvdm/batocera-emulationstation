@@ -36,7 +36,7 @@ Paths::Paths()
 	// Here, BATOCERA & Forks can define their own paths
 
 #if BATOCERA
-	mRootPath = "/home/pi/RetroPie";
+	mRootPath = "/home/pi/RetroPie/roms";
 	mEmulationStationPath = "/etc/emulationstation";
 	mUserEmulationStationPath = "/opt/retropie/configs/all/configs/emulationstation";
 
