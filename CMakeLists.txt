@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 option(GLES "Set to ON if targeting Embedded OpenGL" ${GLES})
 option(GLES2 "Set to ON if targeting OpenGL ES 2.0" ${GLES2})
-option(GL "Set to ON if targeting Desktop OpenGL" ${GL})
+option(GL "Set to ON if targeting Desktop OpenGL" ${GLES})
 option(RPI "Set to ON to enable the Raspberry PI video player (omxplayer)" ${RPI})
 option(CEC "CEC" ON)
 option(BCM "BCM host" OFF)
@@ -121,7 +121,7 @@ if(GLES)
     set(GLSystem "Embedded OpenGL" CACHE STRING "The OpenGL system to be used")
 elseif(GLES2)
     set(GLSystem "OpenGL ES 2.0" CACHE STRING "The OpenGL system to be used")
-elseif(GL)
+elseif(GLES)
     set(GLSystem "Desktop OpenGL" CACHE STRING "The OpenGL system to be used")
 #-------------------------------------------------------------------------------
 #check if we're running on Raspberry Pi
@@ -154,7 +154,7 @@ set_property(CACHE GLSystem PROPERTY STRINGS "Desktop OpenGL" "Embedded OpenGL")
 #finding necessary packages
 #-------------------------------------------------------------------------------
 if(${GLSystem} MATCHES "Desktop OpenGL")
-    find_package(OpenGL REQUIRED)
+    find_package(OpenGLES REQUIRED)
 elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
     find_package(OpenGLES2 REQUIRED)
 else()
@@ -446,7 +446,7 @@ else()
     endif()
     if(${GLSystem} MATCHES "Desktop OpenGL")
         LIST(APPEND COMMON_LIBRARIES
-            ${OPENGL_LIBRARIES}
+            ${OPENGLES_LIBRARIES}
         )
     elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
         LIST(APPEND COMMON_LIBRARIES
