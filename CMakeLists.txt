@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 option(GLES "Set to ON if targeting Embedded OpenGL" ${GLES})
 option(GLES2 "Set to ON if targeting OpenGL ES 2.0" ${GLES2})
-option(GL "Set to ON if targeting Desktop OpenGL" ${GLES})
+option(GL "Set to ON if targeting Desktop OpenGL" ${GL})
 option(RPI "Set to ON to enable the Raspberry PI video player (omxplayer)" ${RPI})
 option(CEC "CEC" ON)
 option(BCM "BCM host" OFF)
@@ -10,7 +10,7 @@ option(BCM "BCM host" OFF)
 option(BATOCERA "Set to ON to enable BATOCERA specific code" OFF)
 option(RETROBAT "Set to ON to enable RETROBAT specific code" OFF)
 
-option(ENABLE_FILEMANAGER "Set to ON to enable f1 shortcut for filesystem" OFF)
+option(ENABLE_FILEMANAGER "Set to ON to enable f1 shortcut for filesystem" ON)
 option(DISABLE_KODI "Set to ON to disable kodi in menu" OFF)
 option(ENABLE_PULSE "Set to ON to enable pulse audio (versus alsa)" OFF)
 option(ENABLE_TTS "Set to ON to enable text to speech" OFF)
@@ -121,7 +121,7 @@ if(GLES)
     set(GLSystem "Embedded OpenGL" CACHE STRING "The OpenGL system to be used")
 elseif(GLES2)
     set(GLSystem "OpenGL ES 2.0" CACHE STRING "The OpenGL system to be used")
-elseif(GLES)
+elseif(GL)
     set(GLSystem "Desktop OpenGL" CACHE STRING "The OpenGL system to be used")
 #-------------------------------------------------------------------------------
 #check if we're running on Raspberry Pi
@@ -154,11 +154,11 @@ set_property(CACHE GLSystem PROPERTY STRINGS "Desktop OpenGL" "Embedded OpenGL")
 #finding necessary packages
 #-------------------------------------------------------------------------------
 if(${GLSystem} MATCHES "Desktop OpenGL")
-    find_package(GLES REQUIRED)
+    find_package(OpenGL REQUIRED)
 elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
     find_package(OpenGLES2 REQUIRED)
 else()
-    find_package(GLES REQUIRED)
+    find_package(OpenGLES REQUIRED)
 endif()
 find_package(Freetype REQUIRED)
 find_package(FreeImage REQUIRED)
@@ -275,12 +275,13 @@ else()
 endif()
 endif()
 
+#add definitions(-DUSE_OPENGL_21)
 if(${GLSystem} MATCHES "Desktop OpenGL")
     add_definitions(-DUSE_MESA_GLES)
 elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
-    add_definitions(-DUSE_MESA_GLES)
+    add_definitions(-DUSE_OPENGLES_20)
 else()
-    add_definitions(-DUSE_MESA_GLES)
+    add_definitions(-DUSE_OPENGLES_10)
 endif()
 
 #-------------------------------------------------------------------------------
@@ -446,7 +447,7 @@ else()
     endif()
     if(${GLSystem} MATCHES "Desktop OpenGL")
         LIST(APPEND COMMON_LIBRARIES
-            ${OPENGLES_LIBRARIES}
+            ${OPENGL_LIBRARIES}
         )
     elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
         LIST(APPEND COMMON_LIBRARIES
@@ -499,4 +500,3 @@ add_subdirectory("es-app")
 if(MSGFMT_EXECUTABLE AND MSGMERGE_EXECUTABLE AND XGETTEXT_EXECUTABLE AND Intl_FOUND)
   add_subdirectory (locale)
 endif()
-
