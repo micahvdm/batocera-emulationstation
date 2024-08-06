@@ -36,28 +36,28 @@ Paths::Paths()
 	// Here, BATOCERA & Forks can define their own paths
 
 #if BATOCERA
-	mRootPath = "/userdata";
-	mEmulationStationPath = "/usr/share/emulationstation";
-	mUserEmulationStationPath = "/userdata/system/configs/emulationstation";
+	mRootPath = "/home/pi/RetroPie";
+	mEmulationStationPath = "/etc/emulationstation";
+	mUserEmulationStationPath = "/opt/retropie/configs/all/configs/emulationstation";
 
-	mLogPath = "/userdata/system/logs";
-	mScreenShotsPath = "/userdata/screenshots";
-	mSaveStatesPath = "/userdata/saves";
-	mMusicPath = "/usr/share/batocera/music";
-	mUserMusicPath = "/userdata/music";
-	mThemesPath = "/usr/share/emulationstation/themes";
-	mUserThemesPath = "/userdata/themes";
+	mLogPath = "/home/pi/RetroPie/logs";
+	mScreenShotsPath = "/home/pi/RetroPie/screenshots";
+	mSaveStatesPath = "/home/pi/RetroPie/saves";
+	mMusicPath = "/home/pi/music";
+	mUserMusicPath = "/home/pi/music";
+	mThemesPath = "/etc/emulationstation/themes";
+	mUserThemesPath = "/home/pi/.emulationstation/themes";
 	mKeyboardMappingsPath = "/usr/share/evmapy";
-	mUserKeyboardMappingsPath = "/userdata/system/configs/evmapy";
-	mDecorationsPath = "/usr/share/batocera/datainit/decorations";
-	mUserDecorationsPath = "/userdata/decorations";
-	mShadersPath = "/usr/share/batocera/shaders/configs";
-	mUserShadersPath = "/userdata/shaders/configs";
+	mUserKeyboardMappingsPath = "/opt/retropie/configs/all/configs/evmapy";
+	mDecorationsPath = "/opt/retropie/decorations";
+	mUserDecorationsPath = "/home/pi/RetroPie/decorations";
+	mShadersPath = "/opt/retropie/shaders/configs";
+	mUserShadersPath = "/home/pi/RetroPie/shaders/configs";
 	mTimeZonesPath = "/usr/share/zoneinfo/";
 	mRetroachivementSounds = "/usr/share/libretro/assets/sounds";
-	mUserRetroachivementSounds = "/userdata/sounds/retroachievements";
+	mUserRetroachivementSounds = "/home/pi/RetroPie/sounds/retroachievements";
 	
-	mSystemConfFilePath = "/userdata/system/batocera.conf";
+	mSystemConfFilePath = "/home/pi/RetroPie/system/batocera.conf";
 	mUserManualPath = "/usr/share/batocera/doc/notice.pdf";
 	mVersionInfoPath = "/usr/share/batocera/batocera.version";
 	mKodiPath = "/usr/bin/kodi";
