@@ -1292,7 +1292,7 @@ bool ApiSystem::getBrightness(int& value)
 
 	if (BACKLIGHT_BRIGHTNESS_NAME.empty() || BACKLIGHT_BRIGHTNESS_MAX_NAME.empty())
 	{
-		for (auto file : Utils::FileSystem::getDirContent("/sys/class/backlight"))
+		for (auto file : Utils::FileSystem::getDirContent("/sys/class/backlight/*"))
 		{				
 			std::string brightnessPath = file + "/brightness";
 			std::string maxBrightnessPath = file + "/max_brightness";
