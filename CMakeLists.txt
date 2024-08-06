@@ -154,11 +154,11 @@ set_property(CACHE GLSystem PROPERTY STRINGS "Desktop OpenGL" "Embedded OpenGL")
 #finding necessary packages
 #-------------------------------------------------------------------------------
 if(${GLSystem} MATCHES "Desktop OpenGL")
-    find_package(OpenGLES REQUIRED)
+    find_package(GLES REQUIRED)
 elseif(${GLSystem} MATCHES "OpenGL ES 2.0")
     find_package(OpenGLES2 REQUIRED)
 else()
-    find_package(OpenGLES REQUIRED)
+    find_package(GLES REQUIRED)
 endif()
 find_package(Freetype REQUIRED)
 find_package(FreeImage REQUIRED)
