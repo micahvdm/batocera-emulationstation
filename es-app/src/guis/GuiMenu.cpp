@@ -1472,7 +1472,7 @@ void GuiMenu::openSystemSettings()
 		s->addWithLabel(_("BRIGHTNESS"), brightnessComponent);
 	}
 
-#ifdef BATOCERA
+//#ifdef BATOCERA
 	// video device
 	std::vector<std::string> availableVideo = ApiSystem::getInstance()->getAvailableVideoOutputDevices();
 	if (availableVideo.size())
@@ -1510,7 +1510,7 @@ void GuiMenu::openSystemSettings()
 	    s->addWithDescription(_("VIDEO MODE"), _("Sets the display's resolution for emulationstation."), videoModeOptionList);
 	    s->addSaveFunc([this, videoModeOptionList] { SystemConf::getInstance()->set("es.resolution", videoModeOptionList->getSelected()); });
 	}
-#endif
+//#endif
 
 	if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::AUDIODEVICE))
 	{
@@ -1612,7 +1612,7 @@ void GuiMenu::openSystemSettings()
 		}
 	}
 
-#ifdef BATOCERA
+//#ifdef BATOCERA
 	// video rotation
 	auto optionsRotation = std::make_shared<OptionListComponent<std::string> >(mWindow, _("SCREEN ROTATION"), false);
 
@@ -1670,7 +1670,7 @@ void GuiMenu::openSystemSettings()
 	    SystemConf::getInstance()->saveSystemConf();
 	  }
 	});	
-#else
+//#else
 	if (!ApiSystem::getInstance()->isScriptingSupported(ApiSystem::GAMESETTINGS))
 	{
 		// Retroachievements
@@ -1686,7 +1686,7 @@ void GuiMenu::openSystemSettings()
 			s->addSwitch(_("CHECK BIOS FILES BEFORE RUNNING A GAME"), "CheckBiosesAtLaunch", true);
 		}
 	}
-#endif
+//#endif
 
 #if ODROIDGOA || GAMEFORCE || RK3326
 	// multimedia keys
@@ -1867,7 +1867,7 @@ void GuiMenu::openSystemSettings()
 #endif
 #endif
 
-#ifdef BATOCERA
+//#ifdef BATOCERA
 	s->addGroup(_("STORAGE"));
 
 	// Storage device
@@ -1958,7 +1958,7 @@ void GuiMenu::openSystemSettings()
 		});
 		mWindow->pushGui(securityGui);
 	});
-#else
+//#else
 	if (isFullUI)
 	{
 		s->addGroup(_("ADVANCED"));
@@ -1966,7 +1966,7 @@ void GuiMenu::openSystemSettings()
 		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::SERVICES) && ApiSystem::getInstance()->getServices().size())
 			s->addEntry(_("SERVICES"), true, [this] { openServicesSettings(); });
 	}
-#endif
+//#endif
 	
 	// Developer options
 	if (isFullUI)
