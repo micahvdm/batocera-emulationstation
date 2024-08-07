@@ -20,8 +20,8 @@ Paths::Paths()
 	mEmulationStationPath = getExePath();
 	mUserEmulationStationPath = "/etc/emulationstation";
 	//mUserEmulationStationPath = Utils::FileSystem::getCanonicalPath(getHomePath() + "/.emulationstation");
-	mRootPath = Utils::FileSystem::getParent(getHomePath());
-	//mRootPath = "/home/pi/RetroPie/roms";
+	//mRootPath = Utils::FileSystem::getParent(getHomePath());
+	mRootPath = "/home/pi/RetroPie/roms";
 
 	mLogPath = mUserEmulationStationPath;
 	mThemesPath = mUserEmulationStationPath + "/themes";
