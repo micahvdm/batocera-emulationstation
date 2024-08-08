@@ -3981,6 +3981,13 @@ void GuiMenu::openQuitMenu_static(Window *window, bool quickAccessMenu, bool ani
 
 			}, "iconScraper", true);
 
+		s->addEntry(_("LAUNCH FILEMANAGER"), false, [s, window]
+			{
+				ApiSystem::getInstance()->launchFileManager(mWindow);
+				delete s;
+			}, "iconManual");
+	
+
 		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::ScriptId::PDFEXTRACTION) && Utils::FileSystem::exists(Paths::getUserManualPath()))
 		{
 			s->addEntry(_("VIEW USER MANUAL"), false, [s, window]
