@@ -3981,11 +3981,11 @@ void GuiMenu::openQuitMenu_static(Window *window, bool quickAccessMenu, bool ani
 
 			}, "iconScraper", true);
 
-		s->addEntry(_("LAUNCH FILEMANAGER"), false, [s, window]
+		s->addEntry(_("LAUNCH FILEMANAGER"), false, [window, s]
 			{
 				Window *window = mWindow;
-				ApiSystem::getInstance()->launchFileManager(mWindow);
 				delete s;
+				ApiSystem::getInstance()->launchFileManager(window);
 			}, "iconManual");
 	
 
