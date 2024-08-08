@@ -3983,7 +3983,8 @@ void GuiMenu::openQuitMenu_static(Window *window, bool quickAccessMenu, bool ani
 
 		s->addEntry(_("LAUNCH FILEMANAGER"), false, [s, window]
 			{
-				ApiSystem::getInstance()->launchFileManager();
+				Window *window = mWindow;
+				ApiSystem::getInstance()->launchFileManager(mWindow);
 				delete s;
 			}, "iconManual");
 	
