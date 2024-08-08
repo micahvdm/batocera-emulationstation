@@ -3981,7 +3981,7 @@ void GuiMenu::openQuitMenu_static(Window *window, bool quickAccessMenu, bool ani
 
 			}, "iconScraper", true);
 
-		s->addEntry(_("LAUNCH FILEMANAGER"), false, [window, s]
+		s->addEntry(_("LAUNCH FILEMANAGER"), false, [mWindow, s]
 			{
 				Window *window = mWindow;
 				delete s;
